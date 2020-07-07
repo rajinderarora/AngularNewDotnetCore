@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace my_app.Models
+namespace MyWebApi.Models
 {
     public class Customer
     {

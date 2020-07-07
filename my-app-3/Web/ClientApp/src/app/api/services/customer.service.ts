@@ -34,7 +34,7 @@ export class CustomerService extends BaseService {
    */
   apiCustomerGet$Plain$Response(params?: {
 
-  }): Observable<StrictHttpResponse<Array<Customer>>> {
+  }): Observable<StrictHttpResponse<Customer>> {
 
     const rb = new RequestBuilder(this.rootUrl, CustomerService.ApiCustomerGetPath, 'get');
     if (params) {
@@ -47,7 +47,7 @@ export class CustomerService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<Customer>>;
+        return r as StrictHttpResponse<Customer>;
       })
     );
   }
@@ -60,10 +60,10 @@ export class CustomerService extends BaseService {
    */
   apiCustomerGet$Plain(params?: {
 
-  }): Observable<Array<Customer>> {
+  }): Observable<Customer> {
 
     return this.apiCustomerGet$Plain$Response(params).pipe(
-      map((r: StrictHttpResponse<Array<Customer>>) => r.body as Array<Customer>)
+      map((r: StrictHttpResponse<Customer>) => r.body as Customer)
     );
   }
 
@@ -75,7 +75,7 @@ export class CustomerService extends BaseService {
    */
   apiCustomerGet$Json$Response(params?: {
 
-  }): Observable<StrictHttpResponse<Array<Customer>>> {
+  }): Observable<StrictHttpResponse<Customer>> {
 
     const rb = new RequestBuilder(this.rootUrl, CustomerService.ApiCustomerGetPath, 'get');
     if (params) {
@@ -88,7 +88,7 @@ export class CustomerService extends BaseService {
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Array<Customer>>;
+        return r as StrictHttpResponse<Customer>;
       })
     );
   }
@@ -101,10 +101,10 @@ export class CustomerService extends BaseService {
    */
   apiCustomerGet$Json(params?: {
 
-  }): Observable<Array<Customer>> {
+  }): Observable<Customer> {
 
     return this.apiCustomerGet$Json$Response(params).pipe(
-      map((r: StrictHttpResponse<Array<Customer>>) => r.body as Array<Customer>)
+      map((r: StrictHttpResponse<Customer>) => r.body as Customer)
     );
   }
 

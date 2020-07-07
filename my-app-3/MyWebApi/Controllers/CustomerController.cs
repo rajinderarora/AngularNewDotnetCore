@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using my_app.Models;
+using MyWebApi.Models;
 
 namespace my_app.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ProducesResponseType(typeof(ErrorDetail), 422)]
+    [ProducesResponseType(typeof(Customer), 200)]
     public class CustomerController : Controller
     {
         [HttpGet]
@@ -55,7 +57,8 @@ namespace my_app.Controllers
                 }
             };
 
-            return Ok(customers);
+            //return Ok(customers);
+            return UnprocessableEntity(new ErrorDetail {Code = "CS1234", Description = "Specific error 1234 has occurred"});
         }
     }
 }

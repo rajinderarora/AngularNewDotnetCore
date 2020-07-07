@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Provider, APP_INITIALIZER } from '@angular/core';
+import { NgModule, Provider, APP_INITIALIZER, forwardRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -12,6 +12,13 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CustomerComponent } from './customer/customer.component';
 import { environment } from "../environments/environment";
 import { ApiConfiguration } from "./api/api-configuration";
+import { ApiInterceptor } from "./api/api.interceptor";
+
+export const API_INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  useExisting: forwardRef(() => ApiInterceptor),
+  multi: true
+};
 
 export function initApiConfiguration(config: ApiConfiguration): Function {
   return () => {
@@ -45,7 +52,7 @@ export const INIT_API_CONFIGURATION: Provider = {
       { path: 'customers', component: CustomerComponent },
     ])
   ],
-  providers: [INIT_API_CONFIGURATION],
+  providers: [INIT_API_CONFIGURATION, ApiInterceptor, API_INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
