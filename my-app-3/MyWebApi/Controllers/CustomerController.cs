@@ -2,12 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using MyWebApi.Models;
 
-namespace my_app.Controllers
+namespace MyWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [ProducesResponseType(typeof(ErrorDetail), 422)]
-    [ProducesResponseType(typeof(Customer), 200)]
     public class CustomerController : Controller
     {
         [HttpGet]
