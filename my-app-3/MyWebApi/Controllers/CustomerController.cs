@@ -55,8 +55,8 @@ namespace MyWebApi.Controllers
                 }
             };
 
-            //return Ok(customers);
-            return UnprocessableEntity(new ErrorDetail {Code = "CS1234", Description = "Specific error 1234 has occurred"});
+            return Ok(customers);
+            //return UnprocessableEntity(new ErrorDetail {Code = "CS1234", Description = "Specific error 1234 has occurred"});
         }
     }
 }
